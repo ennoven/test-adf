@@ -1,0 +1,9 @@
+{
+	"name": "Factory-Cosmos",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b1d4f333-7767-4736-bf12-08b96555743d",
+		"tenantId": "af2a6426-ebc8-4105-a67d-a6d4513a5baa"
+	}
+}
