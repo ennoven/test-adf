@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Factory-Cosmos"
+		},
+		"CoomevaDTW_password": {
+			"value": ""
+		},
+		"CosmosDbMongoDb1_connectionString": {
+			"value": ""
+		},
+		"CosmosDbMongoDb1_account": {
+			"value": "cosmos-01-ennoven-qa"
+		},
+		"CosmosDbMongoDb2_connectionString": {
+			"value": ""
+		},
+		"CosmosDbMongoDb2_account": {
+			"value": "cosmos-02-ennoven-qa"
+		},
+		"CosmosDbMongoDb3_connectionString": {
+			"value": ""
+		},
+		"CosmosDbMongoDb3_account": {
+			"value": "cosmos-01-ennoven-qa"
+		},
+		"DTWPruebas_password": {
+			"value": ""
+		},
+		"linkedService1_connectionString": {
+			"value": ""
+		},
+		"CoomevaDTW_properties_typeProperties_server": {
+			"value": "gibodega.database.windows.net"
+		},
+		"CoomevaDTW_properties_typeProperties_database": {
+			"value": "DW_GI"
+		},
+		"CoomevaDTW_properties_typeProperties_userName": {
+			"value": "GIbodega"
+		},
+		"CosmosDbMongoDb1_properties_typeProperties_database": {
+			"value": "Clientes"
+		},
+		"CosmosDbMongoDb2_properties_typeProperties_database": {
+			"value": "Clientes"
+		},
+		"CosmosDbMongoDb3_properties_typeProperties_database": {
+			"value": "Clientes"
+		},
+		"DTWPruebas_properties_typeProperties_server": {
+			"value": "sqlpruebaennoven.database.windows.net"
+		},
+		"DTWPruebas_properties_typeProperties_database": {
+			"value": "DTWPrueba"
+		},
+		"DTWPruebas_properties_typeProperties_userName": {
+			"value": "adminsql"
+		}
+	}
+}

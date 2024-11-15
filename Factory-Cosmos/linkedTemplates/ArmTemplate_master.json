@@ -1,0 +1,171 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "Factory-Cosmos"
+		},
+		"CoomevaDTW_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"CoomevaDTW\""
+		},
+		"CosmosDbMongoDb1_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"CosmosDbMongoDb1\""
+		},
+		"CosmosDbMongoDb1_account": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"account\"de \"CosmosDbMongoDb1\"",
+			"defaultValue": "cosmos-01-ennoven-qa"
+		},
+		"CosmosDbMongoDb2_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"CosmosDbMongoDb2\""
+		},
+		"CosmosDbMongoDb2_account": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"account\"de \"CosmosDbMongoDb2\"",
+			"defaultValue": "cosmos-02-ennoven-qa"
+		},
+		"CosmosDbMongoDb3_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"CosmosDbMongoDb3\""
+		},
+		"CosmosDbMongoDb3_account": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"account\"de \"CosmosDbMongoDb3\"",
+			"defaultValue": "cosmos-01-ennoven-qa"
+		},
+		"DTWPruebas_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"DTWPruebas\""
+		},
+		"linkedService1_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"linkedService1\""
+		},
+		"CoomevaDTW_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "gibodega.database.windows.net"
+		},
+		"CoomevaDTW_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "DW_GI"
+		},
+		"CoomevaDTW_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "GIbodega"
+		},
+		"CosmosDbMongoDb1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Clientes"
+		},
+		"CosmosDbMongoDb2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Clientes"
+		},
+		"CosmosDbMongoDb3_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Clientes"
+		},
+		"DTWPruebas_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlpruebaennoven.database.windows.net"
+		},
+		"DTWPruebas_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "DTWPrueba"
+		},
+		"DTWPruebas_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminsql"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Token de SAS para la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "Factory-Cosmos_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CoomevaDTW_password": {
+						"value": "[parameters('CoomevaDTW_password')]"
+					},
+					"CosmosDbMongoDb1_connectionString": {
+						"value": "[parameters('CosmosDbMongoDb1_connectionString')]"
+					},
+					"CosmosDbMongoDb1_account": {
+						"value": "[parameters('CosmosDbMongoDb1_account')]"
+					},
+					"CosmosDbMongoDb2_connectionString": {
+						"value": "[parameters('CosmosDbMongoDb2_connectionString')]"
+					},
+					"CosmosDbMongoDb2_account": {
+						"value": "[parameters('CosmosDbMongoDb2_account')]"
+					},
+					"CosmosDbMongoDb3_connectionString": {
+						"value": "[parameters('CosmosDbMongoDb3_connectionString')]"
+					},
+					"CosmosDbMongoDb3_account": {
+						"value": "[parameters('CosmosDbMongoDb3_account')]"
+					},
+					"DTWPruebas_password": {
+						"value": "[parameters('DTWPruebas_password')]"
+					},
+					"linkedService1_connectionString": {
+						"value": "[parameters('linkedService1_connectionString')]"
+					},
+					"CoomevaDTW_properties_typeProperties_server": {
+						"value": "[parameters('CoomevaDTW_properties_typeProperties_server')]"
+					},
+					"CoomevaDTW_properties_typeProperties_database": {
+						"value": "[parameters('CoomevaDTW_properties_typeProperties_database')]"
+					},
+					"CoomevaDTW_properties_typeProperties_userName": {
+						"value": "[parameters('CoomevaDTW_properties_typeProperties_userName')]"
+					},
+					"CosmosDbMongoDb1_properties_typeProperties_database": {
+						"value": "[parameters('CosmosDbMongoDb1_properties_typeProperties_database')]"
+					},
+					"CosmosDbMongoDb2_properties_typeProperties_database": {
+						"value": "[parameters('CosmosDbMongoDb2_properties_typeProperties_database')]"
+					},
+					"CosmosDbMongoDb3_properties_typeProperties_database": {
+						"value": "[parameters('CosmosDbMongoDb3_properties_typeProperties_database')]"
+					},
+					"DTWPruebas_properties_typeProperties_server": {
+						"value": "[parameters('DTWPruebas_properties_typeProperties_server')]"
+					},
+					"DTWPruebas_properties_typeProperties_database": {
+						"value": "[parameters('DTWPruebas_properties_typeProperties_database')]"
+					},
+					"DTWPruebas_properties_typeProperties_userName": {
+						"value": "[parameters('DTWPruebas_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
