@@ -271,6 +271,35 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_pe8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "DTWPruebas",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_table": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().cw_table",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/DTWPruebas')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_49n')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -300,13 +329,42 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_49n')]",
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_pe8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "CoomevaDTW",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_table": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().cw_table",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/CoomevaDTW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_pe8')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "ForEach_49n",
+						"name": "ForEach_pe8",
 						"type": "ForEach",
 						"dependsOn": [],
 						"userProperties": [],
@@ -317,7 +375,7 @@
 							},
 							"activities": [
 								{
-									"name": "Copy_49n",
+									"name": "Copy_pe8",
 									"type": "Copy",
 									"dependsOn": [],
 									"policy": {
@@ -362,7 +420,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "SourceDataset_49n",
+											"referenceName": "SourceDataset_pe8",
 											"type": "DatasetReference",
 											"parameters": {
 												"cw_table": "@item().source.table"
@@ -371,7 +429,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "DestinationDataset_49n",
+											"referenceName": "DestinationDataset_pe8",
 											"type": "DatasetReference",
 											"parameters": {
 												"cw_table": "@item().destination.table"
@@ -1120,8 +1178,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_49n')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_49n')]",
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_pe8')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_pe8')]",
 				"[concat(variables('factoryId'), '/linkedServices/linkedService1')]"
 			]
 		},
